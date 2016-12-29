@@ -21,7 +21,15 @@ export class AppComponent implements OnInit {
   }
 
   onSelect(hero:Hero) {
-    this.selectedHero = hero;
+    if (hero === this.selectedHero) {
+      this.clearSelection();
+    } else {
+      this.selectedHero = hero;
+    }
+  }
+
+  clearSelection() {
+    this.selectedHero = null;
   }
 
   getHeroes(): void {
