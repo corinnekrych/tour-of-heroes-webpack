@@ -4,6 +4,12 @@ import { HEROES } from './hero.fakes';
 
 @Injectable()
 export class HeroService {
+
+  getHero(id: number): Promise<Hero> {
+    return this.getHeroes()
+               .then(heroes => heroes.find(hero => hero.id === id));
+  }
+
   getHeroes(latency:boolean = false): Promise<Hero[]> {
     if (!latency) {
       return Promise.resolve(HEROES);
