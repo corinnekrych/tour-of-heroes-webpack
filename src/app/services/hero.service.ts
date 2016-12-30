@@ -6,6 +6,8 @@ import { Hero } from './hero.model';
 @Injectable()
 export class HeroService {
   private apiBaseUrl = 'api';   // @FIXME: refactor into environment
+  private headers = new Headers({'Content-Type': 'application/json'});
+
 
   constructor(private http: Http) {}
 
@@ -20,6 +22,13 @@ export class HeroService {
     return this.http.get(`${this.apiBaseUrl}/heroes`)
                     .toPromise()
                     .then(response => response.json().data as Hero[])
+                    .catch(this.handleError);
+  }
+
+  update(hero:Hero): Promise<Hero> {
+    return this.http.put(`${this.apiBaseUrl}/heroes/${hero.id}`, JSON.stringify(hero), {headers: this.headers})
+                    .toPromise()
+                    .then(() => hero)
                     .catch(this.handleError);
   }
 
