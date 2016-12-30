@@ -32,6 +32,21 @@ export class HeroService {
                     .catch(this.handleError);
   }
 
+  create(heroName:string): Promise<Hero> {
+    heroName = heroName.trim();
+    return this.http.post(`${this.apiBaseUrl}/heroes/`, JSON.stringify({name: heroName}), {headers: this.headers})
+                    .toPromise()
+                    .then(res => res.json().data)
+                    .catch(this.handleError);
+  }
+
+  delete(heroId:number): Promise<void> {
+    return this.http.delete(`${this.apiBaseUrl}/heroes/${heroId}`, {headers: this.headers})
+                    .toPromise()
+                    .then(() => null)
+                    .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occured: ', error);
     return Promise.reject(error.message || error);

@@ -40,8 +40,29 @@ export class HeroesComponent implements OnInit {
   getHeroes(): void {
     this.isRequesting = true;
     this.heroService
-        .getHeroes(true)
+        .getHeroes()
         .then(resolvedHeroes => { this.heroes = resolvedHeroes; this.isRequesting = false; });
+  }
+
+  add(name:string):void {
+    if (!name) {
+      return;
+    }
+    this.heroService.create(name)
+      .then(hero => {
+        this.heroes.push(hero);
+        this.clearSelection();
+      })
+  }
+
+  delete(hero:Hero):void {
+    this.heroService.delete(hero.id)
+                    .then(() => {
+                      this.heroes = this.heroes.filter(h => h !== hero);
+                      if (this.selectedHero === hero) {
+                        this.clearSelection();
+                      }
+                    })
   }
 
   gotoDetail(): void {
