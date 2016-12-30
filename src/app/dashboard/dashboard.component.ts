@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroService } from '../services/hero.service';
 import { Hero } from '../services/hero.model';
+import { SpinnerComponent } from '../spinner/spinner.component';
 
 @Component({
   selector: 'my-dashboard',
@@ -12,6 +13,7 @@ import { Hero } from '../services/hero.model';
 })
 export class DashboardComponent implements OnInit {
   heroes:Hero[];
+  isRequesting:boolean = false;
 
   constructor(private heroService:HeroService) { }
 
@@ -20,8 +22,12 @@ export class DashboardComponent implements OnInit {
   }
 
   getHeroes() {
+    this.isRequesting = true;
     this.heroService
         .getHeroes()
-        .then(resolvedHeroes => this.heroes = resolvedHeroes.slice(1,5));
+        .then(resolvedHeroes => {
+          this.heroes = resolvedHeroes.slice(1,5);
+          this.isRequesting = false;
+        });
   }
 }

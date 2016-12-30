@@ -1,29 +1,30 @@
 import { Injectable } from '@angular/core';
+import { Headers, Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 import { Hero } from './hero.model';
-import { HEROES } from './hero.fakes';
 
 @Injectable()
 export class HeroService {
+  private apiBaseUrl = 'api';   // @FIXME: refactor into environment
+
+  constructor(private http: Http) {}
 
   getHero(id: number): Promise<Hero> {
-    return this.getHeroes()
-               .then(heroes => heroes.find(hero => hero.id === id));
+    return this.http.get(`${this.apiBaseUrl}/heroes/${id}`)
+                    .toPromise()
+                    .then(response => response.json().data as Hero)
+                    .catch(this.handleError);
   }
 
-  getHeroes(latency:boolean = false): Promise<Hero[]> {
-    if (!latency) {
-      return Promise.resolve(HEROES);
-    }
-
-    let latencyInMs:number = this.getRandomLatency();
-    console.debug(`HeroService::getHeroes() will fake an answer-delay of ${latencyInMs}ms`)
-
-    return new Promise(resolve => {
-      setTimeout(() => resolve(this.getHeroes()), latencyInMs);
-    })
+  getHeroes(): Promise<Hero[]> {
+    return this.http.get(`${this.apiBaseUrl}/heroes`)
+                    .toPromise()
+                    .then(response => response.json().data as Hero[])
+                    .catch(this.handleError);
   }
 
-  private getRandomLatency(min:number = 500, max:number = 3000) {
-    return Math.floor(Math.random()*(max-min+1)+min);
+  private handleError(error: any): Promise<any> {
+    console.error('An error occured: ', error);
+    return Promise.reject(error.message || error);
   }
 }
