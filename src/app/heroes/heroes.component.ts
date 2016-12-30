@@ -3,16 +3,18 @@ import { Router } from '@angular/router';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { Hero } from '../services/hero.model';
 import { HeroService } from '../services/hero.service';
+import { SpinnerComponent } from '../spinner/spinner.component';
 
 @Component({
   selector: 'my-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css'],
-  providers: [HeroService]
+  providers: [HeroService, SpinnerComponent]
 })
 export class HeroesComponent implements OnInit {
   heroes:Hero[];
   selectedHero: Hero;
+  isRequesting:boolean = false;
 
   constructor(
     private heroService: HeroService,
@@ -36,7 +38,10 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes(true).then(resolvedHeroes => this.heroes = resolvedHeroes);
+    this.isRequesting = true;
+    this.heroService
+        .getHeroes(true)
+        .then(resolvedHeroes => { this.heroes = resolvedHeroes; this.isRequesting = false; });
   }
 
   gotoDetail(): void {

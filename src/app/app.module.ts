@@ -9,13 +9,15 @@ import { HeroService } from './services/hero.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroDetailComponent,
     HeroesComponent,
-    DashboardComponent
+    DashboardComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

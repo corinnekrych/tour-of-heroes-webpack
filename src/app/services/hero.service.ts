@@ -16,7 +16,7 @@ export class HeroService {
     }
 
     let latencyInMs:number = this.getRandomLatency();
-    console.debug(`HeroService::getHeroes() will wait for ${latencyInMs}ms`)
+    console.debug(`HeroService::getHeroes() will fake an answer-delay of ${latencyInMs}ms`)
 
     return new Promise(resolve => {
       setTimeout(() => resolve(this.getHeroes()), latencyInMs);
