@@ -15,7 +15,10 @@ import { SpinnerComponent } from './spinner/spinner.component';
 // Fake In-Memory-Web-API
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
 
+// Load all necessary rxjs-extensions
+import './rxjs-extensions';
 
 
 @NgModule({
@@ -24,7 +27,8 @@ import { InMemoryDataService } from './services/in-memory-data.service';
     HeroDetailComponent,
     HeroesComponent,
     DashboardComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    HeroSearchComponent
   ],
   imports: [
     BrowserModule,
