@@ -20,6 +20,9 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 // Load all necessary rxjs-extensions
 import './rxjs-extensions';
 
+export function getRandomDelay() {
+  return Math.floor(Math.random() * 3000 - 1000 + 1000);
+}
 
 @NgModule({
   declarations: [
@@ -34,7 +37,7 @@ import './rxjs-extensions';
     BrowserModule,
     FormsModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1090 }),
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
   ],
   providers: [
@@ -44,4 +47,6 @@ import './rxjs-extensions';
     AppComponent
   ]
 })
-export class AppModule { }
+export class AppModule {
+
+}

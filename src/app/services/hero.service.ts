@@ -12,6 +12,7 @@ export class HeroService {
   constructor(private http: Http) {}
 
   getHero(id: number): Promise<Hero> {
+    let randDelay = Math.random()*3000-1000+1000;
     return this.http.get(`${this.apiBaseUrl}/heroes/${id}`)
                     .toPromise()
                     .then(response => response.json().data as Hero)
