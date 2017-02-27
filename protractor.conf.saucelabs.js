@@ -1,9 +1,18 @@
 exports.config = {
-  allScriptsTimeout: 60000,
-  getPageTimeout: 60000,
+  baseUrl: 'http://localhost:4200/',
 
   sauceUser: process.env.SAUCE_USERNAME,
   sauceKey: process.env.SAUCE_ACCESS_KEY,
+
+  // use this, if your webdriver always starts to run selenium locally
+  //seleniumAddress: 'http://'+process.env.SAUCE_USERNAME+':'+process.env.SAUCE_ACCESS_KEY+'@ondemand.saucelabs.com:80/wd/hub',
+
+  // use this if you started the reverse tunnel from saucelabs (saucelabs connect),
+  // see https://wiki.saucelabs.com/display/DOCS/Setting+Up+Sauce+Connect+Proxy
+  seleniumAddress: 'http://'+process.env.SAUCE_USERNAME+':'+process.env.SAUCE_ACCESS_KEY+'@localhost:4445/wd/hub',
+
+  allScriptsTimeout: 60000,
+  getPageTimeout: 60000,
 
   specs: [
     './dist/out-tsc-e2e/**/*.e2e-spec.js'
@@ -88,7 +97,6 @@ exports.config = {
   ],
 
   useAllAngular2AppRoots: true,
-  baseUrl: 'http://test.kumbier.it/',
 
   onComplete: function() {
     var printSessionId = function(jobName){

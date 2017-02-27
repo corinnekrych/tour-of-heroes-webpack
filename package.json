@@ -10,9 +10,9 @@
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
-    "e2e": "protractor",
+    "e2e": "protractor ./protractor.conf.js",
     "e2eRemote": "protractor --baseUrl='http://test.kumbier.it/ngtoh/'",
-    "e2eSauceLabs": "protractor ./protractor.conf.saucelabs.js"
+    "e2eSauceLabs": "tsc --project e2e/ && protractor ./protractor.conf.saucelabs.js"
   },
   "private": true,
   "dependencies": {
