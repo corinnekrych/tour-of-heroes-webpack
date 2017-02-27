@@ -1,17 +1,14 @@
-import { StartPage } from './page-objects/start-page.po';
 import { browser, element, by } from 'protractor';
 import {} from 'jasmine';
 
 describe('StartPage', () => {
-  let page: StartPage;
-
   beforeEach(async() => {
-    page = new StartPage();
-    await page.navigateTo();
+    browser.get(browser.baseUrl, 60000);
   });
 
 
-  it('should display a title', async() => {
-    expect(page.getTitle()).toEqual('Tour of Heroes');
+  it('should display a title', () => {
+    let title = element(by.css('app-root h1'));
+    expect(title.getText()).toEqual('Tour of Heroes');
   });
 });
