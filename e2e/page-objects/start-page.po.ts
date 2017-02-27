@@ -1,11 +1,12 @@
 import { browser, element, by } from 'protractor';
 
-export class TourOfHeroesPage {
-  navigateTo() {
+export class StartPage {
+  async navigateTo() {
     return browser.get('/');
   }
 
-  getParagraphText() {
+
+  async getTitle() {
     return element(by.css('app-root h1')).getText();
   }
 }
