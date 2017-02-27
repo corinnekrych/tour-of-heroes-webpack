@@ -9,6 +9,6 @@ describe('StartPage', () => {
 
   it('should display a title', () => {
     let title = element(by.css('app-root h1'));
-    expect(title.getText()).toEqual('Tour of Heroes');
+    expect(title.getText()).toContain('Tour of Heroes');
   });
 });
