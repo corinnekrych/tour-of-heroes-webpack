@@ -1,19 +1,8 @@
 module.exports = [
-  // Android (4.4) - Default Browser
-  {
-    name: '[Mobile] Android 4.4 Default Browser',
-    browserName: 'Browser',
-    platformVersion: '4.4',
-    platformName: 'Android',
-    deviceName: 'Android Emulator',
-    deviceOrientation: 'portrait',
-    shardTestFiles: true,
-    maxInstances: 25
-  }
 
   // Android Bleeding Edge (5.1) - Default Browser
   // There's no Emulator at saucelabs for 6.0 yet
-  ,{
+  {
     name: '[Mobile] Android 5.1 Default Browser',
     browserName: 'Browser',
     platformVersion: '5.1',
@@ -24,8 +13,23 @@ module.exports = [
     maxInstances: 25
   }
 
-  // iOS Mobile - we'll stick to the newest, since most updates
-  // for Apple iOS don't cost.
+  // Android (4.4) - Default Browser
+  // WARNING (2017-02-28)
+  //   At the moment, the default browser opens up https://www.google.com, but
+  //   the browser does not have the necessary root-certificates installed, so
+  //   a warning message appears which currently cannot be easily discarded.
+  /*,{
+    name: '[Mobile] Android 4.4 Default Browser',
+    browserName: 'Browser',
+    platformVersion: '4.4',
+    platformName: 'Android',
+    deviceName: 'Android Emulator',
+    deviceOrientation: 'portrait',
+    shardTestFiles: true,
+    maxInstances: 25
+  }*/
+
+  // iOS Mobile Safari
   ,{
     name: '[Mobile] iPhone 7 Safari',
     browserName: 'Safari',
