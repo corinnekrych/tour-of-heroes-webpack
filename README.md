@@ -13,9 +13,13 @@
 
 SauceLabs (specifically the used Appium library) currently has a problem with mobile iOS and https connections. For the time being, you MUST use a http-only url in `./protractor.conf.saucelabs.js` as baseUrl.
 
-* export SAUSE_USERNAME="<your-username>"
-* export SAUCE_ACCESS_KEY="<your-access-key"
-* `./node_modules/.bin/protractor ./protractor.conf.saucelabs.js`
+* `export SAUSE_USERNAME="<your-username>"`
+* `export SAUCE_ACCESS_KEY="<your-access-key"`
+* `npm run e2eSauceLabs`
+
+Alternatively, run it as a one-off command without export:
+
+* `SAUSE_USERNAME="<your-username>" SAUCE_ACCESS_KEY="<your-access-key" npm run e2eSauceLabs`
 
 
 ## SauceLabs connect e2e-testing (reverse tunnel)
