@@ -14,11 +14,7 @@ module.exports = [
   }
 
   // Android (4.4) - Default Browser
-  // WARNING (2017-02-28)
-  //   At the moment, the default browser opens up https://www.google.com, but
-  //   the browser does not have the necessary root-certificates installed, so
-  //   a warning message appears which currently cannot be easily discarded.
-  /*,{
+  ,{
     name: '[Mobile] Android 4.4 Default Browser',
     browserName: 'Browser',
     platformVersion: '4.4',
@@ -27,7 +23,7 @@ module.exports = [
     deviceOrientation: 'portrait',
     shardTestFiles: true,
     maxInstances: 25
-  }*/
+  }
 
   // iOS Mobile Safari
   ,{
