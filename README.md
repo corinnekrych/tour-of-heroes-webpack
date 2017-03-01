@@ -31,7 +31,7 @@ e2e or end-to-end testing is the uppermost layer of a testing hierarchy and test
 
 If you also want to test your software on mobile browsers or a variant of desktop browsers, there are providers like [SauceLabs](https://www.saucelabs.com), which provide an external cloud to test on.
 
-SauceLabs (specifically the used Appium library) currently has a problem with mobile iOS and https connections. For the time being, you MUST use a http-only url in `./protractor.conf.sauce-labs.js` as baseUrl, if you plan to use mobile iOS browsers.
+You are currently unable to test https-connections on mobile iOS with the Appium library (which in turn is used by SauceLabs) due to the way ExecuteAsyncScript is handled - see the [bugreport](https://github.com/appium/appium/issues/3471) for details. For the time being, you MUST use a http-only url in `./protractor.conf.sauce-labs.js` as baseUrl, if you plan to use mobile iOS browsers or write work-arounds, that do not rely on the callback of ExecuteAsyncScript.
 
 You will need a [SauceLabs-Account](https://saucelabs.com/signup/trial) and an API-key, which you can find in your account settings after logging in.
 
