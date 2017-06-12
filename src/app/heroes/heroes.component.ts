@@ -10,7 +10,7 @@ import { ContextService } from '../services/context.service';
   selector: 'my-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css'],
-  //providers: [HeroService, SpinnerComponent]
+  //providers: [ContextService]
 })
 export class HeroesComponent implements OnInit {
   heroes:Hero[];

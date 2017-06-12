@@ -22,6 +22,8 @@ import './rxjs-extensions';
 import { RecentHeroComponent } from './recent-hero/recent-hero.component';
 import { ContextService } from './services/context.service';
 
+import { HeroSearchService } from './services/hero-search.service';
+
 export function getRandomDelay() {
   return Math.floor(Math.random() * 3000 - 1000 + 1000);
 }
@@ -44,6 +46,7 @@ export function getRandomDelay() {
     AppRoutingModule
   ],
   providers: [
+    HeroSearchService,
     HeroService,
     ContextService
   ],
