@@ -1,0 +1,7 @@
+ <h4>Most recently visited heros</h4>
+
+ <ul *ngIf="recentHeroes">
+  <li *ngFor="let recent of recentHeroes">
+    {{recent?.name}}
+  </li>
+</ul>

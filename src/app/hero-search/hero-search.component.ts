@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-
+import { Hero, VisitedAction, HeroVisitedAction } from '../services/hero.model';
+import { ContextService } from '../services/context.service';
 import { HeroSearchService } from '../services/hero-search.service';
-import { Hero } from '../services/hero.model';
 
 @Component({
   selector: 'hero-search',
@@ -18,7 +18,8 @@ export class HeroSearchComponent implements OnInit {
 
   constructor(
     private heroSearchService:HeroSearchService,
-    private router:Router
+    private router:Router,
+    private contextService: ContextService
   ) { }
 
   search(term:string):void {
@@ -39,6 +40,8 @@ export class HeroSearchComponent implements OnInit {
   }
 
   gotoDetail(hero:Hero):void {
+    this.contextService.addRecent.next({hero: hero, action:VisitedAction.Add} as HeroVisitedAction);
+
     let link = ['/detail', hero.id];
     this.router.navigate(link);
   }

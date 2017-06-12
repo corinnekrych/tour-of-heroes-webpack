@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
-import { Hero } from '../services/hero.model';
+import { Hero, VisitedAction, HeroVisitedAction } from '../services/hero.model';
 import { HeroService } from '../services/hero.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
+import { ContextService } from '../services/context.service';
 
 @Component({
   selector: 'my-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css'],
-  providers: [HeroService, SpinnerComponent]
+  //providers: [HeroService, SpinnerComponent]
 })
 export class HeroesComponent implements OnInit {
   heroes:Hero[];
@@ -18,7 +19,8 @@ export class HeroesComponent implements OnInit {
 
   constructor(
     private heroService: HeroService,
-    private router: Router
+    private router: Router,
+    private contextService: ContextService
   ) {}
 
   ngOnInit(): void {
@@ -26,6 +28,9 @@ export class HeroesComponent implements OnInit {
   }
 
   onSelect(hero:Hero) {
+
+    this.contextService.addRecent.next({hero: hero, action:VisitedAction.Add} as HeroVisitedAction);
+
     if (hero === this.selectedHero) {
       this.clearSelection();
     } else {

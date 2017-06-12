@@ -19,6 +19,8 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 
 // Load all necessary rxjs-extensions
 import './rxjs-extensions';
+import { RecentHeroComponent } from './recent-hero/recent-hero.component';
+import { ContextService } from './services/context.service';
 
 export function getRandomDelay() {
   return Math.floor(Math.random() * 3000 - 1000 + 1000);
@@ -31,7 +33,8 @@ export function getRandomDelay() {
     HeroesComponent,
     DashboardComponent,
     SpinnerComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    RecentHeroComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ export function getRandomDelay() {
     AppRoutingModule
   ],
   providers: [
-    HeroService
+    HeroService,
+    ContextService
   ],
   bootstrap: [
     AppComponent
