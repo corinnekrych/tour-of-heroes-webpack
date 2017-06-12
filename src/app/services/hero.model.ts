@@ -5,10 +5,11 @@ export class Hero {
 
 export enum VisitedAction {
     Add,
-    Delete
+    Delete,
+    Refresh
 }
 
 export class HeroVisitedAction {
   action: VisitedAction;
-  hero: Hero;
+  hero?: Hero;
 }

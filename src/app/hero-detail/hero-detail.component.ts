@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { Hero } from '../services/hero.model';
+import { Hero, HeroVisitedAction, VisitedAction } from '../services/hero.model';
 import { HeroService } from '../services/hero.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
-
+import { ContextService } from '../services/context.service';
 import 'rxjs/add/operator/switchMap';
 
 
@@ -20,7 +20,9 @@ export class HeroDetailComponent implements OnInit {
   constructor(
     private heroService: HeroService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private router: Router,
+    private context: ContextService
   ) {}
 
   ngOnInit() {
@@ -36,7 +38,9 @@ export class HeroDetailComponent implements OnInit {
 
 
   goBack(): void {
-    this.location.back();
+    //this.location.back();
+    let action: HeroVisitedAction = {action: VisitedAction.Refresh};
+    this.router.navigateByUrl('/heroes').then(val => this.context.addRecent.next(action));
   }
 
   save(): void {

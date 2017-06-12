@@ -7,20 +7,15 @@ import { Observable } from 'rxjs';
   templateUrl: './recent-hero.component.html',
   styleUrls: ['./recent-hero.component.css']
 })
-export class RecentHeroComponent implements OnInit {
+export class RecentHeroComponent {
 
   recentHeroes: Hero[];
 
   constructor(private context: ContextService) {
-
-  }
-
-  ngOnInit() {
-    this.context.recent
-        .subscribe(val => {
+    context.recent.subscribe(val => {
            this.recentHeroes = val;
-           console.log("::::::REcentHEroComponentINIT " + JSON.stringify(val))
-        });
+           console.log("::RecentHeroComponent::Constructor::" + JSON.stringify(val))
+     });
   }
 
 }
