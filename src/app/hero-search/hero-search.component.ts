@@ -10,7 +10,7 @@ import { HeroSearchService } from '../services/hero-search.service';
   selector: 'hero-search',
   templateUrl: './hero-search.component.html',
   styleUrls: ['./hero-search.component.css'],
-  //providers: [ContextService]
+  providers: [ContextService]
 })
 export class HeroSearchComponent implements OnInit {
   heroes:Observable<Hero[]>;
