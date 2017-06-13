@@ -10,8 +10,7 @@ import { HeroService } from './services/hero.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { SpinnerComponent } from './spinner/spinner.component';
-
+import { SharedModule } from './shared/shared.module';
 // Fake In-Memory-Web-API
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
@@ -19,7 +18,6 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 
 // Load all necessary rxjs-extensions
 import './rxjs-extensions';
-import { RecentHeroComponent } from './recent-hero/recent-hero.component';
 import { ContextService } from './services/context.service';
 
 import { HeroSearchService } from './services/hero-search.service';
@@ -34,21 +32,19 @@ export function getRandomDelay() {
     HeroDetailComponent,
     HeroesComponent,
     DashboardComponent,
-    SpinnerComponent,
-    HeroSearchComponent,
-    RecentHeroComponent
+    HeroSearchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    SharedModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
   ],
   providers: [
     HeroSearchService,
-    HeroService,
-    ContextService
+    HeroService
   ],
   bootstrap: [
     AppComponent
