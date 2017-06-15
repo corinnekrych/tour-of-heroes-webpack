@@ -6,7 +6,7 @@ import { SpinnerComponent } from '../spinner/spinner.component';
 @Component({
   selector: 'my-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
   heroes:Hero[];

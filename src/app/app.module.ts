@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -18,11 +18,12 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 
 // Load all necessary rxjs-extensions
-import './rxjs-extensions';
+import 'rxjs';
 import { RecentHeroComponent } from './recent-hero/recent-hero.component';
 import { ContextService } from './services/context.service';
 
 import { HeroSearchService } from './services/hero-search.service';
+import { SharedModule } from './shared/shared.module';
 
 export function getRandomDelay() {
   return Math.floor(Math.random() * 3000 - 1000 + 1000);
@@ -30,18 +31,19 @@ export function getRandomDelay() {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeroDetailComponent,
-    HeroesComponent,
-    DashboardComponent,
-    SpinnerComponent,
-    HeroSearchComponent,
-    RecentHeroComponent
+    AppComponent
+    //HeroDetailComponent,
+    //HeroesComponent,
+    //DashboardComponent,
+    //SpinnerComponent,
+    //HeroSearchComponent,
+    //RecentHeroComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    SharedModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
   ],
@@ -52,7 +54,8 @@ export function getRandomDelay() {
   ],
   bootstrap: [
     AppComponent
-  ]
+  ],
+  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
 
