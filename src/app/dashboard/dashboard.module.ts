@@ -24,13 +24,13 @@ import {HeroDetailModule } from '../hero-detail/hero-detail.module';
     HeroSearchComponent
   ],
   exports: [
-    HeroSearchComponent,
-    HeroDetailComponent
+    // HeroSearchComponent,
+    // HeroDetailComponent
   ],
   providers: [
-    ContextService,
-    HeroService,
-    HeroSearchService
+    // ContextService,
+    // HeroService,
+    // HeroSearchService
   ]
 })
 export class DashboardModule { }

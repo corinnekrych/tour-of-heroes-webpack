@@ -50,7 +50,7 @@ export function getRandomDelay() {
   providers: [
     HeroSearchService,
     HeroService,
-    ContextService
+    //ContextService
   ],
   bootstrap: [
     AppComponent
