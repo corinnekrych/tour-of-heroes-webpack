@@ -13,6 +13,7 @@ export class ContextService {
   constructor() {
     this.recent = Observable.merge(this.addRecent, this.deleteRecent)
       .scan((acc: Hero[], heroAction: HeroVisitedAction) => {
+        console.log(":::Add/Delete");
         if (heroAction.action == VisitedAction.Add) {
           let index = acc.findIndex(x => x.name == heroAction.hero.name);
           if (index == -1) {

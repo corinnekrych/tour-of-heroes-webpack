@@ -74,4 +74,10 @@ export class HeroesComponent implements OnInit {
   gotoDetail(): void {
     this.router.navigate(['/detail', this.selectedHero.id]);
   }
+
+  ngAfterContentChecked() {
+    let action: HeroVisitedAction = {action: VisitedAction.Refresh};
+    this.contextService.addRecent.next(action);
+  }
+
 }

@@ -46,4 +46,9 @@ export class HeroSearchComponent implements OnInit {
     this.router.navigate(link);
   }
 
+  ngAfterContentChecked() {
+    let action: HeroVisitedAction = {action: VisitedAction.Refresh};
+    this.contextService.addRecent.next(action);
+  }
+
 }

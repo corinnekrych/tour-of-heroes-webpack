@@ -10,12 +10,19 @@ import { Observable } from 'rxjs';
 export class RecentHeroComponent {
 
   recentHeroes: Hero[];
+  alive: boolean = true;
 
   constructor(private context: ContextService) {
-    context.recent.subscribe(val => {
+    context.recent
+    .takeWhile(() => this.alive)
+    .subscribe(val => {
            this.recentHeroes = val;
            console.log("::RecentHeroComponent::Constructor::" + JSON.stringify(val))
      });
+  }
+
+  public ngOnDestroy() {
+    this.alive = false;
   }
 
 }
