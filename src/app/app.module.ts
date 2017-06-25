@@ -36,8 +36,7 @@ export function getRandomDelay() {
     BrowserModule,
     FormsModule,
     HttpModule,
-    //SharedModule,
-    SharedModule.forRoot(),
+    SharedModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
   ],

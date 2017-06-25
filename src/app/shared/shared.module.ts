@@ -16,16 +16,9 @@ import { ContextService } from '../services/context.service';
     SpinnerComponent,
     RecentHeroComponent
   ],
-  //providers: [ContextService],
+  providers: [ContextService],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule {
-
-  static forRoot() {
-    return {
-      ngModule: SharedModule,
-      providers: [ ContextService ]
-    }
-  }
 
  }
