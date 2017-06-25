@@ -8,19 +8,21 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./recent-hero.component.css']
 })
 export class RecentHeroComponent {
-  sub: Subscription;
+
   recentHeroes: Hero[];
+  alive: boolean = true;
 
   constructor(private context: ContextService) {
-    console.log("::RecentHeroComponent1");
-    if (this.sub == null) {
-      console.log("::RecentHeroComponent2");
-      this.sub = context.recent.subscribe(val => {
-        console.log("::RecentHeroComponent3");
-        this.recentHeroes = val;
-        console.log("::RecentHeroComponent::Constructor::" + JSON.stringify(val))
-      });
-    }
+    context.recent
+    .takeWhile(() => this.alive)
+    .subscribe(val => {
+           this.recentHeroes = val;
+           console.log("::RecentHeroComponent::Constructor::" + JSON.stringify(val))
+     });
+  }
+
+  public ngOnDestroy() {
+    this.alive = false;
   }
 
 }

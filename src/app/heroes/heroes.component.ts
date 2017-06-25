@@ -9,8 +9,7 @@ import { ContextService } from '../services/context.service';
 @Component({
   selector: 'my-heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css'],
-  //providers: [ContextService]
+  styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
   heroes:Hero[];
@@ -73,5 +72,10 @@ export class HeroesComponent implements OnInit {
 
   gotoDetail(): void {
     this.router.navigate(['/detail', this.selectedHero.id]);
+  }
+
+  ngAfterContentChecked() {
+    let action: HeroVisitedAction = {action: VisitedAction.Refresh};
+    this.contextService.addRecent.next(action);
   }
 }

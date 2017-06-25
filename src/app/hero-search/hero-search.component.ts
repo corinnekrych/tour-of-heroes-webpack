@@ -9,8 +9,7 @@ import { HeroSearchService } from '../services/hero-search.service';
 @Component({
   selector: 'hero-search',
   templateUrl: './hero-search.component.html',
-  styleUrls: ['./hero-search.component.css'],
-  //providers: [ContextService]
+  styleUrls: ['./hero-search.component.css']
 })
 export class HeroSearchComponent implements OnInit {
   heroes:Observable<Hero[]>;
@@ -45,5 +44,8 @@ export class HeroSearchComponent implements OnInit {
     let link = ['/detail', hero.id];
     this.router.navigate(link);
   }
-
+  ngAfterContentChecked() {
+    let action: HeroVisitedAction = {action: VisitedAction.Refresh};
+    this.contextService.addRecent.next(action);
+  }
 }

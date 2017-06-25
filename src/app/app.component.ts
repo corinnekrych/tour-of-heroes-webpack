@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ContextService } from './services/context.service';
 import { HeroVisitedAction, VisitedAction } from './services/hero.model';
 @Component({
   selector: 'app-root',
@@ -9,17 +8,6 @@ import { HeroVisitedAction, VisitedAction } from './services/hero.model';
 })
 export class AppComponent {
   title = 'Tour of Heroes';
-  constructor(private router:Router, private context:ContextService) {
+  constructor() {}
 
-  }
-
-  onHeroesClick() {
-    let action: HeroVisitedAction = {action: VisitedAction.Refresh};
-    this.router.navigateByUrl('/heroes').then(val => this.context.addRecent.next(action));
-  }
-
-  onDashboardClick() {
-    let action: HeroVisitedAction = {action: VisitedAction.Refresh};
-    this.router.navigateByUrl('/dashboard').then(val => this.context.addRecent.next(action));
-  }
 }

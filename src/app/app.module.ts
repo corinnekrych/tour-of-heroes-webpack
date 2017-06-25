@@ -20,7 +20,6 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 // Load all necessary rxjs-extensions
 import 'rxjs';
 import { RecentHeroComponent } from './recent-hero/recent-hero.component';
-import { ContextService } from './services/context.service';
 
 import { HeroSearchService } from './services/hero-search.service';
 import { SharedModule } from './shared/shared.module';
@@ -32,26 +31,17 @@ export function getRandomDelay() {
 @NgModule({
   declarations: [
     AppComponent
-    //HeroDetailComponent,
-    //HeroesComponent,
-    //DashboardComponent,
-    //SpinnerComponent,
-    //HeroSearchComponent,
-    //RecentHeroComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    SharedModule,
+    //SharedModule,
+    SharedModule.forRoot(),
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
   ],
-  providers: [
-    HeroSearchService,
-    HeroService,
-    //ContextService
-  ],
+  providers: [],
   bootstrap: [
     AppComponent
   ],
